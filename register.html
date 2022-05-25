@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body{
+            background: linear-gradient(to left, #ff7171, #8ea4e7);
+            width: 100%;
+            height: 100vh;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+        .container{
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        div.parent{
+            background-color: #fff;
+            width: 35%;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1;
+        }
+        input{
+            border: 1px solid #eee;
+            width: 100%;
+            padding: 5px;
+        }
+        input:focus{
+            border: 1px solid #bbb;
+        }
+        @media screen and (max-width:650px){
+            div.parent{
+                width: 50%;
+            }
+        }
+        span.regis{
+            font-size: 18px;
+        }
+        label{
+            letter-spacing: 1px;
+        }
+        div.field{
+            margin-top:10px;
+        }
+        input[type = "submit"]{
+            background: linear-gradient(to left, #ff7171, #8ea4e7);
+            color: #fff;
+            font-size: 20px;
+            letter-spacing: 3px;
+            cursor: pointer;
+        }
+        div.select{
+            display: flex;
+            justify-content: space-between;
+        }
+        div.password-policies{
+            margin: 0px;
+            padding-left: 12px;
+            color: #bbb;
+            width: 90%;
+            height: 0px;
+            transition: height 300ms ease-in-out;
+            overflow: hidden;
+        }
+        div.password-policies.active{
+            opacity: 1;
+            padding: 10px;
+            height: 120px;
+        }
+        div.password-policies div{
+            margin-top: 3px;
+        }
+        .policy-uppercase.active , .policy-number.active , .policy-special.active , .policy-length.active , 
+        .policy-whitespace.active{
+            color: #000;
+        }
+        .box-area{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .box-area li{
+            position:absolute;
+            display: block; 
+            list-style-type: none;
+            width: 25%;
+            height: 25%;
+            border: 10px solid rgba(255,255,255,0.2);
+            animation: animate 20s linear infinite;
+            bottom: -150px;
+            border-radius: 10px;
+        }
+        .box-area li:nth-child(1){
+            left: 86%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+        .box-area li:nth-child(2){
+            left: 12%;
+            width: 30px;
+            height: 30px;
+            animation-delay: 1s;
+            animation-duration: 10s;
+        }
+        .box-area li:nth-child(3){
+            left: 70%;
+            width: 100px;
+            height: 100px;
+            animation-delay: 5.5s;
+        }
+        .box-area li:nth-child(4){
+            left: 42%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 15s;
+        }
+        .box-area li:nth-child(5){
+            left: 65%;
+            width: 40px;
+            height: 40px;
+            animation-delay: 0s;
+        }
+        .box-area li:nth-child(6){
+            left: 15%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3.5s;            
+        }
+        @keyframes animate {
+            0%{
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+            100%{
+                transform: translateY(-800px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+    <div class="parent">
+        <div>
+            <span class="regis">Registration</span>
+        </div>
+        <div>
+            <form action="" method="post">
+                <div class="field">
+                    <label for="fname">First name</label><br>
+                    <input type="text" id="fname" name="fname" placeholder="Your first name" required><br>
+                </div>
+                <div class="field">
+                    <label for="lname">Last name</label><br>
+                    <input type="text" id="lname" name="lname" placeholder="Your last name" required><br>
+                </div>
+                <div class="field">
+                    <label for="phone">Phone number</label><br>
+                    <input type="tel" id="phone" name="phone" placeholder="000-0000-000" pattern="[1-9]{3}-[1-9]{4}-[1-9]{3}" required><br>
+                </div>
+                <div class="field">
+                <label for="address">Address</label><br>
+                <input type="text" id="address" name="address" placeholder="Your Address" required><br>
+                </div>
+                <div class="field select">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender" style="width:60%;">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                </div>
+                <div class="field">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="Email" placeholder="Enter your email" required><br>
+                </div>
+
+                <div class="field">
+                <label for="pass">Password</label><br>
+                <input type="password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}" id="password-field" required minlength="8" maxlength="8"><br><br>
+                    <div class="password-policies">
+                        <div class="policy-uppercase">
+                            Start With Uppercase
+                        </div>
+                        <div class="policy-length">
+                            8 Character only
+                        </div>
+                        <div class="policy-number">
+                            Contain 1 digit at least
+                        </div>
+                        <div class="policy-special">
+                            One Special character
+                        </div>
+                        <div class="policy-whitespace">
+                            no white space
+                        </div>
+                    </div>
+                </div>
+
+                <input type="submit" value="sign up">
+            </form>
+        </div>
+    </div>
+</section>
+<ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+<script>
+    function _id(name){
+        return document.getElementById(name);
+    }
+    function _class(name){
+        return document.getElementsByClassName(name);
+    }
+
+    _id("password-field").addEventListener("focus",function(){
+        _class("password-policies")[0].classList.add("active");
+    });
+    _id("password-field").addEventListener("blur",function(){
+        _class("password-policies")[0].classList.remove("active");
+    });
+    
+    _id("password-field").addEventListener("keyup",function(){
+        let password = _id("password-field").value;
+
+        if(/[A-Z]/.test(password[0])){
+            _class("policy-uppercase")[0].classList.add("active");
+        }
+        else{
+            _class("policy-uppercase")[0].classList.remove("active");
+        }
+
+        if(/[0-9]/.test(password)){
+            _class("policy-number")[0].classList.add("active");
+        }
+        else{
+            _class("policy-number")[0].classList.remove("active");
+        }
+
+        if(/[^A-Za-z0-9]/.test(password)){
+            _class("policy-special")[0].classList.add("active");
+        }
+        else{
+            _class("policy-special")[0].classList.remove("active");
+        }
+        
+        if(password.length == 8){
+            _class("policy-length")[0].classList.add("active");
+        }
+        else{
+            _class("policy-length")[0].classList.remove("active");
+        }
+
+        if(/^.*(?=\s)/.test(password)){
+            _class("policy-whitespace")[0].classList.remove("active");
+        }
+        else{
+            _class("policy-whitespace")[0].classList.add("active");
+        }
+    });
+    
+</script>
+</body>
+</html>
